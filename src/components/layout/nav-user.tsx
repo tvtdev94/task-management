@@ -57,7 +57,7 @@ export function NavUser({
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className='w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg'
-            side={isMobile ? 'bottom' : 'right'}
+            side={isMobile ? 'bottom' : 'top'}
             align='end'
             sideOffset={4}
           >
@@ -73,34 +73,6 @@ export function NavUser({
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Link to='/settings/account'>
-                  <BadgeCheck />
-                  Account
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to='/settings'>
-                  <CreditCard />
-                  Billing
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to='/settings/notifications'>
-                  <Bell />
-                  Notifications
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogOut />

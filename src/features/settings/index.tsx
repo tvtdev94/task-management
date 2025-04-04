@@ -32,7 +32,7 @@ export default function Settings() {
             Settings
           </h1>
           <p className='text-muted-foreground'>
-            Manage your account settings and set e-mail preferences.
+            Manage your account settings
           </p>
         </div>
         <Separator className='my-4 lg:my-6' />
@@ -56,23 +56,8 @@ const sidebarNavItems = [
     href: '/settings',
   },
   {
-    title: 'Account',
-    icon: <IconTool size={18} />,
-    href: '/settings/account',
-  },
-  {
-    title: 'Appearance',
-    icon: <IconPalette size={18} />,
-    href: '/settings/appearance',
-  },
-  {
     title: 'Notifications',
     icon: <IconNotification size={18} />,
     href: '/settings/notifications',
-  },
-  {
-    title: 'Display',
-    icon: <IconBrowserCheck size={18} />,
-    href: '/settings/display',
   },
 ]

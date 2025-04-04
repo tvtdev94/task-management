@@ -26,7 +26,7 @@ export default function Tasks() {
           <div>
             <h2 className='text-2xl font-bold tracking-tight'>Tasks</h2>
             <p className='text-muted-foreground'>
-              Here&apos;s a list of your tasks for this month!
+              Here&apos;s a list of your tasks!
             </p>
           </div>
           <TasksPrimaryButtons />
