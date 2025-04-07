@@ -1,8 +1,10 @@
+export type Status = 'backlog' | 'todo' | 'in_progress' | 'done' | 'canceled'
+
 export interface KanbanTask {
   id: string
   title: string
   description?: string
-  status: 'backlog' | 'todo' | 'in_progress' | 'done' | 'canceled'
+  status: Status
   priority: 'low' | 'medium' | 'high'
   assignee?: {
     name: string
