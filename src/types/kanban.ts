@@ -2,7 +2,7 @@ export interface KanbanTask {
   id: string
   title: string
   description?: string
-  status: 'todo' | 'in_progress' | 'done'
+  status: 'backlog' | 'todo' | 'in_progress' | 'done' | 'canceled'
   priority: 'low' | 'medium' | 'high'
   assignee?: {
     name: string
