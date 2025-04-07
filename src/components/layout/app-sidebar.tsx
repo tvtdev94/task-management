@@ -17,12 +17,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher team={sidebarData.team} />
       </SidebarHeader>
       <SidebarContent>
-        {sidebarData.navGroups.map((props) => (
-          <NavGroup {...props} />
+        {sidebarData.navGroups.map((group, index) => (
+          <NavGroup key={`nav-group-${index}`} {...group} />
         ))}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={sidebarData.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

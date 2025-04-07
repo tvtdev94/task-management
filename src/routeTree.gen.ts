@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedKanbanImport } from './routes/_authenticated/kanban'
 import { Route as authSignInImport } from './routes/(auth)/sign-in'
 import { Route as authOtpImport } from './routes/(auth)/otp'
 import { Route as auth500Import } from './routes/(auth)/500'
@@ -58,6 +59,7 @@ const AuthenticatedSettingsAppearanceLazyImport = createFileRoute(
 const AuthenticatedSettingsAccountLazyImport = createFileRoute(
   '/_authenticated/settings/account',
 )()
+const AuthenticatedKanbanLazyImport = createFileRoute('/_authenticated/kanban')()
 
 // Create/Update Routes
 
@@ -247,6 +249,12 @@ const AuthenticatedSettingsAccountLazyRoute =
     ),
   )
 
+const AuthenticatedKanbanLazyRoute = AuthenticatedKanbanLazyImport.update({
+  id: '/kanban',
+  path: '/kanban',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -278,6 +286,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/sign-in'
       preLoaderRoute: typeof authSignInImport
       parentRoute: typeof rootRoute
+    }
+    '/_authenticated/kanban': {
+      id: '/_authenticated/kanban'
+      path: '/kanban'
+      fullPath: '/kanban'
+      preLoaderRoute: typeof AuthenticatedKanbanImport
+      parentRoute: typeof AuthenticatedRouteImport
     }
     '/_authenticated/settings': {
       id: '/_authenticated/settings'
@@ -442,6 +457,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedHelpCenterIndexLazyRoute: typeof AuthenticatedHelpCenterIndexLazyRoute
   AuthenticatedTasksIndexLazyRoute: typeof AuthenticatedTasksIndexLazyRoute
   AuthenticatedUsersIndexLazyRoute: typeof AuthenticatedUsersIndexLazyRoute
+  AuthenticatedKanbanLazyRoute: typeof AuthenticatedKanbanLazyRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -451,6 +467,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedHelpCenterIndexLazyRoute: AuthenticatedHelpCenterIndexLazyRoute,
   AuthenticatedTasksIndexLazyRoute: AuthenticatedTasksIndexLazyRoute,
   AuthenticatedUsersIndexLazyRoute: AuthenticatedUsersIndexLazyRoute,
+  AuthenticatedKanbanLazyRoute: AuthenticatedKanbanLazyRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -461,6 +478,7 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500LazyRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
+  '/kanban': typeof AuthenticatedKanbanLazyRoute
   '/settings': typeof AuthenticatedSettingsRouteLazyRouteWithChildren
   '/forgot-password': typeof authForgotPasswordLazyRoute
   '/sign-in-2': typeof authSignIn2LazyRoute
@@ -484,6 +502,7 @@ export interface FileRoutesByTo {
   '/500': typeof errors500LazyRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
+  '/kanban': typeof AuthenticatedKanbanLazyRoute
   '/forgot-password': typeof authForgotPasswordLazyRoute
   '/sign-in-2': typeof authSignIn2LazyRoute
   '/sign-up': typeof authSignUpLazyRoute
@@ -508,6 +527,7 @@ export interface FileRoutesById {
   '/(auth)/500': typeof auth500Route
   '/(auth)/otp': typeof authOtpRoute
   '/(auth)/sign-in': typeof authSignInRoute
+  '/_authenticated/kanban': typeof AuthenticatedKanbanLazyRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRouteLazyRouteWithChildren
   '/(auth)/forgot-password': typeof authForgotPasswordLazyRoute
   '/(auth)/sign-in-2': typeof authSignIn2LazyRoute
@@ -535,6 +555,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/otp'
     | '/sign-in'
+    | '/kanban'
     | '/settings'
     | '/forgot-password'
     | '/sign-in-2'
@@ -557,6 +578,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/otp'
     | '/sign-in'
+    | '/kanban'
     | '/forgot-password'
     | '/sign-in-2'
     | '/sign-up'
@@ -579,6 +601,7 @@ export interface FileRouteTypes {
     | '/(auth)/500'
     | '/(auth)/otp'
     | '/(auth)/sign-in'
+    | '/_authenticated/kanban'
     | '/_authenticated/settings'
     | '/(auth)/forgot-password'
     | '/(auth)/sign-in-2'
@@ -657,6 +680,7 @@ export const routeTree = rootRoute
     "/_authenticated": {
       "filePath": "_authenticated/route.tsx",
       "children": [
+        "/_authenticated/kanban",
         "/_authenticated/settings",
         "/_authenticated/",
         "/_authenticated/help-center/",
@@ -672,6 +696,10 @@ export const routeTree = rootRoute
     },
     "/(auth)/sign-in": {
       "filePath": "(auth)/sign-in.tsx"
+    },
+    "/_authenticated/kanban": {
+      "filePath": "_authenticated/kanban.tsx",
+      "parent": "/_authenticated"
     },
     "/_authenticated/settings": {
       "filePath": "_authenticated/settings/route.lazy.tsx",

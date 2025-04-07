@@ -5,6 +5,7 @@ import {
   IconSettings,
   IconUserCog,
   IconUsers,
+  IconLayoutKanban,
 } from '@tabler/icons-react'
 import { Command } from 'lucide-react'
 import { type SidebarData } from '../types'
@@ -31,6 +32,11 @@ export const sidebarData: SidebarData = {
           title: 'Tasks',
           url: '/tasks',
           icon: IconChecklist,
+        },
+        {
+          title: 'Kanban',
+          url: '/kanban',
+          icon: IconLayoutKanban,
         },
         {
           title: 'Users',
