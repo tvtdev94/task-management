@@ -30,13 +30,12 @@ type NavCollapsible = BaseNavItem & {
 type NavItem = NavCollapsible | NavLink
 
 interface NavGroup {
-  title: string
   items: NavItem[]
 }
 
 interface SidebarData {
   user: User
-  teams: Team[]
+  team: Team
   navGroups: NavGroup[]
 }
 

@@ -14,11 +14,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible='icon' variant='floating' {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={sidebarData.teams} />
+        <TeamSwitcher team={sidebarData.team} />
       </SidebarHeader>
       <SidebarContent>
         {sidebarData.navGroups.map((props) => (
-          <NavGroup key={props.title} {...props} />
+          <NavGroup {...props} />
         ))}
       </SidebarContent>
       <SidebarFooter>

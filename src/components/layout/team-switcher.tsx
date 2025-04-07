@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { ChevronsUpDown } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -11,15 +10,14 @@ import {
 } from '@/components/ui/sidebar'
 
 export function TeamSwitcher({
-  teams,
+  team,
 }: {
-  teams: {
+  team: {
     name: string
     logo: React.ElementType
-    plan: string
-  }[]
+  }
 }) {
-  const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const [activeTeam] = React.useState(team)
 
   return (
     <SidebarMenu>
@@ -37,7 +35,6 @@ export function TeamSwitcher({
                 <span className='truncate font-semibold'>
                   {activeTeam.name}
                 </span>
-                <span className='truncate text-xs'>{activeTeam.plan}</span>
               </div>
             </SidebarMenuButton>
           </DropdownMenuTrigger>
