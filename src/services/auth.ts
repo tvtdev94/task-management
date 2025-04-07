@@ -1,5 +1,7 @@
 import { useMutationApi } from '@/hooks/use-api'
 import { LoginCredentials, LoginResponse } from '@/types/auth'
+import { mockAuthService } from './mock-auth'
+import { useAuthStore } from '@/stores/authStore'
 
 export const authService = {
   login: () => {
@@ -12,6 +14,10 @@ export const authService = {
           setUser(data.data.user)
           setAccessToken(data.data.accessToken)
         },
+        // Use mock service in development
+        mutationFn: import.meta.env.VITE_ENABLE_MOCK_API
+          ? mockAuthService.login
+          : undefined,
       }
     )
   },
